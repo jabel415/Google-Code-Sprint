@@ -22,6 +22,27 @@ public class Event implements Comparable<Event>{
         this.description = desc;
         this.dueDate = due;
         this.difficulty = diff; // [1-10]
+        this.priority=priority(this);
+    }
+
+    public double timeLeft(Date due){
+        double diff = Math.abs(due.getTime() - currDate.getTime());
+        double diffDays = diff / (24 * 60 * 60 * 1000);
+        return diffDays;
+    }
+
+    public double priority(Event task){
+        double difficulty = (double)this.difficulty;
+        if(timeLeft(task.dueDate)<7){
+            priority=Math.ceil(difficulty*(timeLeft(task.dueDate)));
+        }
+        else if(timeLeft(task.dueDate)%7==0){
+            priority=Math.ceil((difficulty*.75)*(timeLeft(task.dueDate)));
+        }
+        else{
+            priority=Math.ceil((difficulty*.5)*(timeLeft(task.dueDate)));
+        }
+        return priority;
     }
 
     public String getDescription(){
@@ -36,25 +57,7 @@ public class Event implements Comparable<Event>{
         return difficulty;
     }
 
-    public double timeLeft(Date due){
-        double diff = Math.abs(due.getTime() - currDate.getTime());
-        double diffDays = diff / (24 * 60 * 60 * 1000);
-        return diffDays;
-    }
-
-    public double priority(Event task){
-        double difficulty = (double)this.difficulty;
-        if(timeLeft(task.dueDate)<7){
-            priority=difficulty*(timeLeft(task.dueDate));
-        }
-        else if(timeLeft(task.dueDate)%7==0){
-            priority=(difficulty-2)*(timeLeft(task.dueDate));
-        }
-        else{
-            priority=(difficulty-4)*(timeLeft(task.dueDate));
-        }
-        return priority;
-    }
+    public double getPriority(){ return priority; }
 
     @Override
     public int compareTo(Event task) {
@@ -69,19 +72,25 @@ public class Event implements Comparable<Event>{
         }
     }
 
-    public static void main(String[]args){
+    /*public static void main(String[]args){
+
         Date currDate = Calendar.getInstance().getTime();
-        String date = "01/11/2012";
+        String date1 = "11/11/2016";
+        String date2 = "11/15/2016";
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         Date d1 = null;
-
+        Date d2 = null;
         try {
-            d1 = df.parse(date);
+            d1 = df.parse(date1);
+            d2 = df.parse(date2);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        Event task1 = new Event("paper", d1,4);
+        Event task2 = new Event("test", d2,7);
         double diff = Math.abs(d1.getTime() - currDate.getTime());
         double diffDays = diff / (24 * 60 * 60 * 1000);
         System.out.println(diffDays);
-    }
+        System.out.println(task1.compareTo(task2));
+    }*/
 }
