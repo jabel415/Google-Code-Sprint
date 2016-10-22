@@ -17,9 +17,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private Spinner task, difficulty;
-    private EditText date;
-    private PriorityQueue maxHeap = new PriorityQueue();
+    private Spinner task;
+    private EditText date, difficulty;
+    public static PriorityQueue maxHeap = new PriorityQueue();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +27,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         task = (Spinner) findViewById (R.id.task);
-        difficulty = (Spinner) findViewById (R.id.difficult);
 
         ArrayAdapter<CharSequence> adapterTask = ArrayAdapter.createFromResource(this, R.array.weights, android.R.layout.simple_spinner_item);
-        ArrayAdapter<CharSequence> adapterDifficulty = ArrayAdapter.createFromResource(this, R.array.difficulty, android.R.layout.simple_spinner_item);
 
         adapterTask.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         task.setAdapter(adapterTask);
-        difficulty.setAdapter(adapterDifficulty);
 
         date = (EditText) findViewById (R.id.date);
+        difficulty = (EditText) findViewById (R.id.difficult);
     }
 
     public void submit (View v) {
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         
-        maxHeap.add(task.toString(),d, Integer.parseInt(difficulty.toString()));
+        maxHeap.add(task.toString (),d, Integer.parseInt (difficulty.getText ().toString ()));
     }
 
     public void result (View v) {

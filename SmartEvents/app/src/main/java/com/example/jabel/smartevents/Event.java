@@ -78,14 +78,16 @@ public class Event implements Comparable<Event>{
 
     @Override
     public int compareTo(Event task) {
-        if(this.priority < task.priority){
-            return -1;
-        }
-        else if (this.priority == task.priority){
-            return 0;
-        }
-        else{
-            return 1;
+        if (this != null && task != null) {
+            if (this.priority < task.priority) {
+                return -1;
+            } else if (this.priority == task.priority) {
+                return 0;
+            } else {
+                return 1;
+            }
+        } else {
+            return -2;
         }
     }
 
