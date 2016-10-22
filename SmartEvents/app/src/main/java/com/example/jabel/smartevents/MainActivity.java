@@ -4,14 +4,22 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private Spinner task, difficulty;
     private EditText date;
+    private PriorityQueue maxHeap = new PriorityQueue();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void submit (View v) {
         Button button = (Button) v;
-
-
+        String dateString = date.toString();
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        Date d = null;
+        try {
+            d = df.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        maxHeap.add(task.toString(),d, Integer.valueOf(difficulty.toString()));
     }
 
     public void result (View v) {
