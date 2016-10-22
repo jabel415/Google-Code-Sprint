@@ -8,9 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.GridLayout;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,4 +50,25 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+	/*
+    public void nextNodeOnClick (View v) {
+        Button button = (Button) v;
+
+        if (button.callOnClick ()) {
+            if (button.node.getCurr) {
+                //display.setText = "You are already here!";
+                return;
+            } else {
+                for (int i = 0; i < button.node.connected.length (); i++) {
+                    if (button.node.connected[i].getCurr){
+                        button.node.connected[i].setCurr (false);
+                        button.node.setCurr (true);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+	*/
 }
