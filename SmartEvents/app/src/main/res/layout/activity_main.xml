@@ -50,21 +50,11 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:id="@+id/editText6"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
         android:id="@+id/editText9"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/editText6"/>
+        android:layout_marginLeft="70dp"
+        android:layout_centerVertical="true"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -84,5 +74,13 @@
         android:id="@+id/button"
         android:layout_alignEnd="@+id/textView2"
         android:layout_alignStart="@+id/textView2"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:id="@+id/spinner"/>
 
 </RelativeLayout>

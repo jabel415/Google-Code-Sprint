@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">SmartEvents</string>
+    <string-array name="weights">
+        <item>research paper</item>
+        <item>test</item>
+        <item>lab report</item>
+        <item>case study</item>
+        <item>abstract</item>
+        <item>bibliography</item>
+        <item>essay</item>
+        <item>reflective journal</item>
+        <item>project</item>
+        <item>literature review</item>
+        <item>article review</item>
+        <item>homework</item>
+        <item>classwork</item>
+    </string-array>
 </resources>
