@@ -1,32 +1,49 @@
 package com.example.jabel.smartevents;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
-    private Spinner spinner;
+    private Spinner task, difficulty;
+    private EditText date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinner = (Spinner) findViewById (R.id.spinner);
+        task = (Spinner) findViewById (R.id.task);
+        difficulty = (Spinner) findViewById (R.id.difficult);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.weights, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterTask = ArrayAdapter.createFromResource(this, R.array.weights, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterDifficulty = ArrayAdapter.createFromResource(this, R.array.difficulty, android.R.layout.simple_spinner_item);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterTask.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinner.setAdapter(adapter);
+        task.setAdapter(adapterTask);
+        difficulty.setAdapter(adapterDifficulty);
+
+        date = (EditText) findViewById (R.id.date);
     }
 
     public void submit (View v) {
         Button button = (Button) v;
 
 
+    }
+
+    public void result (View v) {
+        Button button = (Button) v;
+
+        Intent intent = new Intent (this, Result.class);
+
+        startActivity (intent);
     }
 }
