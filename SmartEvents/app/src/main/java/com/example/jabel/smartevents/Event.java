@@ -33,7 +33,7 @@ public class Event implements Comparable<Event>{
         return -1;
     }
 
-    public double priority(Event task){
+    /*public double priority(Event task){
         double difficulty = (double)this.difficulty;
         if(timeLeft(task.dueDate)<7){
             priority=Math.ceil(difficulty*(timeLeft(task.dueDate)));
@@ -43,6 +43,21 @@ public class Event implements Comparable<Event>{
         }
         else{
             priority=Math.ceil((difficulty*.5)*(timeLeft(task.dueDate)));
+        }
+        return priority;
+    }*/
+
+    public double priority(Event task){
+        double difficulty = (double)this.difficulty;
+        if(timeLeft(task.dueDate)<=1)
+        {
+            priority=Math.ceil(difficulty*2 / ((timeLeft(task.dueDate))));
+        }
+        if(timeLeft(task.dueDate)<7){
+            priority=Math.ceil(difficulty / ((timeLeft(task.dueDate))));
+        }
+        else{
+            priority=Math.ceil((difficulty*.5)/(timeLeft(task.dueDate)));
         }
         return priority;
     }
