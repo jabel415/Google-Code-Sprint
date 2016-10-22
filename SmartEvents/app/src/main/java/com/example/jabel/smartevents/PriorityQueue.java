@@ -13,9 +13,9 @@ public class PriorityQueue<T extends Comparable<? super T>> {
 
 
     public PriorityQueue(){
-        maxHeap[0] = null;
         numItems = 0;
     }
+
     private int getParent(int x){
         return (x-1)/2;
     }

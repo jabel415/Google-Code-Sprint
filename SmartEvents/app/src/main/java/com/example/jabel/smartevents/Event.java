@@ -23,10 +23,14 @@ public class Event implements Comparable<Event>{
         this.priority=priority(this);
     }
 
-    public double timeLeft(Date due){
-        double diff = Math.abs(due.getTime() - currDate.getTime());
-        double diffDays = diff / (24 * 60 * 60 * 1000);
-        return diffDays;
+    public double timeLeft(Date due) {
+        if (due != null) {
+            double diff = Math.abs (due.getTime () - currDate.getTime ());
+            double diffDays = diff / (24 * 60 * 60 * 1000);
+            return diffDays;
+        }
+
+        return -1;
     }
 
     public double priority(Event task){

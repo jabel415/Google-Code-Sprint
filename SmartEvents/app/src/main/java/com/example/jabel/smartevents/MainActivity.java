@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         maxHeap.add(task.toString(),d, Integer.valueOf(difficulty.toString()));
     }
 
