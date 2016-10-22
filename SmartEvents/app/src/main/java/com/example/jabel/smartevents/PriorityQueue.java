@@ -1,29 +1,20 @@
 package com.example.jabel.smartevents;
 
 import java.lang.Comparable;
+import java.util.Date;
 
 /**
  * Created by jabel on 10/22/2016.
  */
 
 public class PriorityQueue<T extends Comparable<? super T>> {
-    private int size;
     private int numItems;
-    private Event task;
-    private T[] maxHeap;
+    private Event[] maxHeap;
 
 
-    public PriorityQueue(T[] heap, int length, int max){
-        this.maxHeap = heap;
-        this.numItems = length;
-        this.size = max;
-        constructHeap();
-    }
-
-    public void constructHeap(){
-        for(int x = numItems/2-1; x >= 0; x++){
-        //siftdown(
-        }
+    public PriorityQueue(){
+        maxHeap[0] = null;
+        numItems = 0;
     }
     private int getParent(int x){
         return (x-1)/2;
@@ -37,17 +28,20 @@ public class PriorityQueue<T extends Comparable<? super T>> {
         return 2*x+2;
     }
 
-    public void add(Event task) {
-        assert numItems < size : "Heap is full";
+    public void add(String desc, Date due, int diff) {
+        //assert numItems < size : "Heap is full";
         int currNode = numItems++;
 
+        maxHeap[currNode] = new Event (desc, due, diff);
     }
 
-    public T getMax(){
-        T head = null;
+    public Event getMax(){
+        Event head = null;
+
         if(!isEmpty()){
             head = maxHeap[1];
         }
+
         return head;
     }
     public boolean isEmpty(){
