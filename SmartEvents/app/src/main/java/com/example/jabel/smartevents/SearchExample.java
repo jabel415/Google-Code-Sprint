@@ -35,9 +35,9 @@ public class SearchExample {
             HttpResponse httpResponse = request.execute();
             JSONObject response = (JSONObject) parser.parse(httpResponse.parseAsString());
             JSONArray elements = (JSONArray) response.get("itemListElement");
-            for (Object element : elements) {
+            /*for (Object element : elements) {
                 System.out.println(JsonPath.read(element, "$.result.name").toString());
-            }
+            }*/
         } catch (Exception ex) {
             ex.printStackTrace();
         }
