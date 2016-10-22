@@ -16,7 +16,7 @@ public class Event implements Comparable<Event>{
     private Date dueDate;
     private Date currDate = Calendar.getInstance().getTime();
     private int difficulty;
-    private int priority;
+    private double priority;
 
     public Event(String desc, Date due, int diff){
         this.description = desc;
@@ -43,15 +43,30 @@ public class Event implements Comparable<Event>{
     }
 
     public double priority(Event task){
+        double difficulty = (double)this.difficulty;
         if(timeLeft(task.dueDate)<7){
-            priority*=1;
+            priority=difficulty*(timeLeft(task.dueDate));
+        }
+        else if(timeLeft(task.dueDate)%7==0){
+            priority=(difficulty-2)*(timeLeft(task.dueDate));
+        }
+        else{
+            priority=(difficulty-4)*(timeLeft(task.dueDate));
         }
         return priority;
     }
 
     @Override
     public int compareTo(Event task) {
-        return 1;
+        if(this.priority < task.priority){
+            return -1;
+        }
+        else if (this.priority == task.priority){
+            return 0;
+        }
+        else{
+            return 1;
+        }
     }
 
     public static void main(String[]args){
