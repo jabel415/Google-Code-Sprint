@@ -16,6 +16,7 @@ import org.w3c.dom.Text;
 
 public class Result extends AppCompatActivity {
     private ScrollView sV;
+    private TextView result[] = new TextView[5];
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -23,15 +24,17 @@ public class Result extends AppCompatActivity {
         setContentView(R.layout.result);
 
         //sV = (ScrollView) findViewById (R.id.scroll);
-        TextView result = (TextView) findViewById (R.id.textView5);
-        TextView result1 = (TextView) findViewById (R.id.textView6);
-        TextView result2 = (TextView) findViewById (R.id.textView7);
+        result[0] = (TextView) findViewById (R.id.textView5);
+        result[1] = (TextView) findViewById (R.id.textView12);
+        result[2] = (TextView) findViewById (R.id.textView6);
+        result[3] = (TextView) findViewById (R.id.textView13);
+        result[4] = (TextView) findViewById (R.id.textView7);
 
         PriorityQueue maxHeap = MainActivity.maxHeap;
 
-        result.setText (maxHeap.getMax ().getDescription () + " " + maxHeap.getMax ().getDifficulty () + " " + maxHeap.getMax ().getDueDate ());
-        result1.setText (maxHeap.getMax ().getDescription () + " " + maxHeap.getMax ().getDifficulty () + " " + maxHeap.getMax ().getDueDate ());
-        result2.setText (maxHeap.getMax ().getDescription () + " " + maxHeap.getMax ().getDifficulty () + " " + maxHeap.getMax ().getDueDate ());
+        for (int i = 0; i < result.length; i++) {
+            result[i].setText (maxHeap.access (i + 1).getDescription () + " " + maxHeap.access (i + 1).getDifficulty () + " " + maxHeap.access (i + 1).getDueDate ());
+        }
     }
 
     public void Return (View v) {

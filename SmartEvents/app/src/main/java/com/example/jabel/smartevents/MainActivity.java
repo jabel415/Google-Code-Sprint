@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void submit (View v) {
         Button button = (Button) v;
-        String dateString = date.toString();
+        String dateString = date.getText ().toString();
+        System.out.println ("Test: " + date.getText ().toString ());
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         Date d = null;
         try {
@@ -48,8 +49,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
-        maxHeap.add(task.toString (),d, Integer.parseInt (difficulty.getText ().toString ()));
+
+        if (!difficulty.getText ().toString ().isEmpty () && d != null && Integer.valueOf (difficulty.getText ().toString ()) > 0 && Integer.valueOf (difficulty.getText ().toString ()) < 11) {
+            maxHeap.add (task.getSelectedItem ().toString (), d, Integer.parseInt (difficulty.getText ().toString ()));
+        } else {
+            System.out.println ("Testing is working yay! :D");
+        }
     }
 
     public void result (View v) {

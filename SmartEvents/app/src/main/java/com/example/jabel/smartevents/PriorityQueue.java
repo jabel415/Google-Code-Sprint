@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class PriorityQueue<T extends Comparable<? super T>> {
     private int numItems;
-    private Event[] maxHeap = new Event[10];
+    private Event[] maxHeap = new Event[6];
 
 
     public PriorityQueue(){
@@ -52,7 +52,7 @@ public class PriorityQueue<T extends Comparable<? super T>> {
         //assert numItems < size : "Heap is full";
         int currNode = ++numItems;
 
-        if (numItems <= 9) {
+        if (numItems <= maxHeap.length - 1) {
             maxHeap[currNode] = new Event (desc, due, diff);
 
             while ((currNode != 0) && (maxHeap[currNode].compareTo (maxHeap[getParent (currNode)]) > 0)) {
@@ -62,6 +62,14 @@ public class PriorityQueue<T extends Comparable<? super T>> {
         } else {
             System.out.println ("Full!");
         }
+    }
+
+    public Event access (int x) {
+        if (x >= numItems || x <= 0) {
+            return new Event ("Empty", null, 0);
+        }
+
+        return maxHeap[x];
     }
 
     public Event remove(int x) {
@@ -111,9 +119,9 @@ public class PriorityQueue<T extends Comparable<? super T>> {
     }
 
     public Event removeMax(){
-        swap(0, --numItems);
-        if (numItems != 0) {
-            siftDown(0);
+        swap(1, --numItems);
+        if (numItems != 1) {
+            siftDown(1);
         }
         return maxHeap[numItems];
     }
