@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (!difficulty.getText ().toString ().isEmpty () && d != null && Integer.valueOf (difficulty.getText ().toString ()) > 0 && Integer.valueOf (difficulty.getText ().toString ()) < 11) {
-            maxHeap.add (task.getSelectedItem ().toString (), d, Integer.parseInt (difficulty.getText ().toString ()));
+            maxHeap.place (task.getSelectedItem ().toString (), d, Integer.parseInt (difficulty.getText ().toString ()));
         } else {
             System.out.println ("Testing is working yay! :D");
         }
